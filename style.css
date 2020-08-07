@@ -8,56 +8,6 @@
 body {
   background: #A9D9C3;
 }
-.login {
-  width: 400px;
-  background-color: #ffffff;
-  box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
-  margin: 100px auto;
-}
-.login h1 {
-  text-align: center;
-  color: #5b6574;
-  font-size: 24px;
-  padding: 20px 0 20px 0;
-  border-bottom: 1px solid #dee0e4;
-}
-.login form {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  padding-top: 20px;
-}
-.login form label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  background-color: #3274d6;
-  color: #ffffff;
-}
-.login form input[type="password"], .login form input[type="text"] {
-  width: 310px;
-  height: 50px;
-  border: 1px solid #dee0e4;
-  margin-bottom: 20px;
-  padding: 0 15px;
-}
-.login form input[type="submit"] {
-  width: 100%;
-  padding: 15px;
- margin-top: 20px;
-  background-color: #3274d6;
-  border: 0;
-  cursor: pointer;
-  font-weight: bold;
-  color: #ffffff;
-  transition: background-color 0.2s;
-}
-.login form input[type="submit"]:hover {
-background-color: #2868c7;
-  transition: background-color 0.2s;
-}
 .navtop {
 	background-color: #2f3947;
 	height: 60px;
@@ -130,4 +80,77 @@ td, th{
   border: 1px solid black;
   text-align: left;
   padding: 8px;
+}
+#wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content{
+  background-color:  #A9D9C3;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 37%;
+}
+#tableWrapper{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+#betform{
+  width: 100%;
+  margin: 100px auto;
+  padding-bottom: 30px;
+  border: 1px solid #918274;
+  border-radius: 5px;
+  background: white;
+}
+#betform input[type=number]{
+  width: 80%;
+  height: 35px;
+  margin: 5px 10%;
+  font-size: 1.1em;
+  padding: 4px;
+  font-size: .9em;
+}
+#formbtns{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inputLabel label{
+  width: 80%;
+  height: 35px;
+  margin: 3px 10%;
+  font-size: 1.1em;
+}
+#betform textarea{
+  width: 80%;
+  height: 35px;
+  margin: 5px 10%;
+  font-size: 1.1em;
+  padding: 4px;
+  font-size: .9em;
+}
+#betform select{
+  width: 80%;
+  height: 35px;
+  margin: 5px 10%;
+  font-size: 1.1em;
+  padding: 4px;
+  font-size: .9em;
 }
