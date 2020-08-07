@@ -36,40 +36,58 @@
                 $dataRow=$dataRow."<tr><td>$rows2[0]</td><td>$rows2[2]</td><td>$rows2[1]</td><td>$rows2[3]</td></tr>";
             }
         ?>
-        <button id="placebet">Place a Bet</button>
-        <button id="showbets">Show My Bets In Progress</button>
-        <button id="hidebets" style="display:none;">Hide Bets In Progress</button>
-        <form name="betform" id="betform" onsubmit="onSubmit()" style="display:none;" action="place_bet_process.php" method="POST">
-            <label for="person2">Who Would You Like to Bet Against?</label>
-            <select name="person2" id="person2" required>
-                <option value="" name="none"></option>
-            <?php 
-                while($rows = $resultSet1->fetch_assoc()){
-                    $person2 = $rows['username'];
-                    echo "<option value='$person2' name='$person2'>$person2</option>";
-                }
-                //$conn->close();
-            ?>
-            </select><br>
-            <textarea name = "betToPlace" id="betToPlace" placeholder="What's your bet?" rows="4" cols="35" required></textarea><br>
-            <label for="betAmount">Enter a dollar amount to bet:</label>
-            <input type="number" name="betAmount" id="betAmount" min="0.01" step="0.01" value="00.01"><br>
-            <button type="reset" id="cancel" name="cancel" onclick="onCancel()">Cancel</button>
-            <input type="submit" value="Place Bet">
-        </form>
-        <table id="betsinprogress" style="display:none;">     
-            <tr>
-                <th>Person 1</th>
-                <th>Made this bet</th>
-                <th>with Person 2</th>
-                <th>for this Amount</th>
-            <tr>
-            <?php echo $dataRow;?>
-        </table> 
+        <div id="wrapper">
+            <button id="placebet">Place a Bet</button>
+            <button id="showbets">Show My Bets In Progress</button>
+            <button id="hidebets" style="display:none;">Hide Bets In Progress</button>
+        </div>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <form name="betform" id="betform" onsubmit="onSubmit()" action="place_bet_process.php" method="POST">
+                    <div class="inputLabel">
+                        <label for="person2">Who Would You Like to Bet Against?</label><br>
+                    </div>
+                    <select name="person2" id="person2" required>
+                        <option value="" name="none"></option>
+                    <?php 
+                        while($rows = $resultSet1->fetch_assoc()){
+                            $person2 = $rows['username'];
+                            echo "<option value='$person2' name='$person2'>$person2</option>";
+                        }
+                        //$conn->close();
+                    ?>
+                    </select><br>
+                    <div class="inputLabel">
+                        <label for="betToPlace">What's your bet?</label>
+                    </div>
+                    <textarea name = "betToPlace" id="betToPlace" placeholder="What's your bet?" rows="4" cols="35" style="resize:none;"required></textarea><br>
+                    <div class="inputLabel">
+                        <label for="betAmount">Enter a dollar amount to bet:</label>
+                    </div>
+                    <input type="number" name="betAmount" id="betAmount" min="0.01" step="0.01" value="00.01"><br>
+                    <div id="formbtns">
+                        <button type="reset" id="cancel" name="cancel" onclick="onCancel()">Cancel</button>
+                        <input type="submit" value="Place Bet">
+                    </div>    
+                </form>
+            </div>
+        </div>
+        <div id="tableWrapper">
+            <table id="betsinprogress" style="display:none;">     
+                <tr>
+                    <th>Person 1</th>
+                    <th>Made this bet</th>
+                    <th>with Person 2</th>
+                    <th>for this Amount</th>
+                <tr>
+                <?php echo $dataRow;?>
+            </table> 
+        </div>
         <script type="text/javascript">
             document.getElementById("placebet").onclick = function(){
-                document.getElementById("placebet").style.display = "none";
+                //document.getElementById("placebet").style.display = "none";
                 document.getElementById("betform").style.display = "block";
+                document.getElementById("myModal").style.display = "block";
             }
             document.getElementById("showbets").onclick = function(){
                 document.getElementById("betsinprogress").style.display = "block";
@@ -84,11 +102,17 @@
             function onCancel(){
                 document.getElementById("placebet").style.display = "block";
                 document.getElementById("betform").style.display = "none";
+                document.getElementById("myModal").style.display = "none";
             }
             function onSubmit(){
                 alert("Your bet has been placed!");
                 document.getElementById("placebet").style.display = "block";
                 document.getElementById("betform").style.display = "none";
+            }
+            window.onclick = function(event){
+                if(event.target == document.getElementById("myModal")){
+                    document.getElementById("myModal").style.display = "none";
+                }
             }
         </script>   
 	</body>
