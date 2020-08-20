@@ -1,10 +1,10 @@
 <?php 
     session_start();
     //Database connection
-    $host = "localhost";
-    $dbusername = "test";
-    $dbpassword = "";
-    $dbname = "test_tugvada";
+    $host = "50.87.193.51";
+    $dbusername = "tugvadac_tugvadamgr";
+    $dbpassword = "testing";
+    $dbname = "tugvadac_tugvada_data";
 
     $username='';
     $password='';
@@ -24,7 +24,7 @@
         else{
             $_SESSION['loggedin'] = TRUE;
             $_SESSION['name'] = $_POST['username'];
-            header('location: home.php');
+            header('location: index.php');
         }
     }
 ?>

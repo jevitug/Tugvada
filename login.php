@@ -1,4 +1,4 @@
-<?php include('login_process.php') ?>
+<?php include 'login_process.php'; ?>
 <!DOCTYPE html>
 <html>
     <head>
